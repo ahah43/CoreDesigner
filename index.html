@@ -122,10 +122,10 @@ function toggle() {
 <button onClick="nowsee();" id="Run" style="width: 90%; height: 50px;color: red;"/>RUN</button>
  </div>
         <div id="DrawingArea" class="column" style="background-color:#00000z;"> 
-            <canvas id="canvas" width="400" height="400"
-            style="border:0px solid #c3c3c3;">
-            Your browser does not support the canvas element.
-            </canvas>
+            <!-- <canvas id="canvas" width="400" height="400" -->
+            <!-- style="border:0px solid #c3c3c3;"> -->
+            <!-- Your browser does not support the canvas element. -->
+            <!-- </canvas> -->
         </div>
 
 </div>
@@ -164,7 +164,17 @@ function mytable() {
         //DrawingArea = document.getElementById("DrawingArea")
         //DrawingArea.innerHTML = "";
         //DrawingArea.appendChild(canvas);
-        canvas = document.getElementById("canvas")
+		oldCanvas = document.getElementById("canvas");
+		if (oldCanvas != null){oldCanvas.remove()};
+		canvas = document.createElement("CANVAS");
+		canvas.setAttribute("id","canvas");
+		canvas.setAttribute("width",400);
+		canvas.setAttribute("height",400);
+		DrawingArea = document.getElementById("DrawingArea")
+        //DrawingArea.innerHTML = "";
+        DrawingArea.appendChild(canvas);
+		
+        //canvas = document.getElementById("canvas")
         checkboxes = document.getElementsByName('Steps');
         const R = 0.5*parseFloat(document.getElementById('D').value);
         const th = parseFloat(document.getElementById('th').value);
